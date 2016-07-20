@@ -51,6 +51,26 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
     }
 
     @Override
+    public boolean add(int index, E object) {
+        ensureValidIndex(index);
+
+        Node<E> newNode = new Node(object);
+        if (index == 0) {
+            headNode.lastNode = newNode;
+            headNode = newNode;
+        } else {
+            Node<E> currentNode = getNode(index);
+            newNode.nextNode = currentNode;
+            newNode.lastNode = currentNode.lastNode;
+            newNode.nextNode.lastNode = newNode;
+            newNode.lastNode.nextNode = newNode;
+        }
+
+        size++;
+        return true;
+    }
+
+    @Override
     public boolean add(E object) {
         Node<E> newNode = new Node(object);
         if (size == 0) {
@@ -81,6 +101,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         return currentNode;
     }
 
+    @Override
     public void set(int index, E object) {
         Node<E> currentNode = getNode(index);
         Node<E> newNode = new Node<>(object);

@@ -19,8 +19,12 @@ public abstract class MyAbstractList<E> implements MyList<E> {
     public abstract int size();
 
     public abstract boolean add(E object);
+    
+    public abstract boolean add(int index, E object);
 
     public abstract E get(int index);
+    
+    public abstract void set(int index, E object);
 
     public abstract int indexOf(E object);
 

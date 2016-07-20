@@ -56,10 +56,30 @@ public class MyArrayList<E> extends MyAbstractList<E> {
         return true;
     }
 
+    public boolean add(int index, E object) {
+        ensureValidIndex(index);
+        ensureCapacity(size + 1);
+
+        // Push objects back by 1
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+
+        array[index] = object;
+        size++;
+        return true;
+    }
+
     @Override
     public E get(int index) {
         ensureValidIndex(index);
         return array[index];
+    }
+
+    @Override
+    public void set(int index, E object) {
+        add(index, object);
+        remove(index + 1);
     }
 
     @Override

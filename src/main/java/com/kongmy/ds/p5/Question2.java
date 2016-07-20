@@ -2,8 +2,6 @@
  */
 package com.kongmy.ds.p5;
 
-import java.util.LinkedList;
-
 /**
  *
  * @author Kong My
