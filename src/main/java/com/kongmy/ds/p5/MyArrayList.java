@@ -2,11 +2,9 @@
  */
 package com.kongmy.ds.p5;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  *
@@ -24,9 +22,18 @@ public class MyArrayList<E> extends MyAbstractList<E> {
         array = (E[]) new Object[INITIAL_SIZE];
     }
 
+    public MyArrayList(E[] array) {
+        this();
+
+        for (E object : array) {
+            add(object);
+        }
+    }
+
     public MyArrayList(Collection<? extends E> collection) {
         this();
-        for (E object : collection) {
+
+        for (E object : array) {
             add(object);
         }
     }
@@ -97,7 +104,7 @@ public class MyArrayList<E> extends MyAbstractList<E> {
 
         @Override
         public boolean hasNext() {
-            return current < iteratorArray.length;
+            return current < iteratorArray.length - 1;
         }
 
         @Override

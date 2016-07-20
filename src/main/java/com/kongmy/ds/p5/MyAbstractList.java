@@ -2,12 +2,6 @@
  */
 package com.kongmy.ds.p5;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-
 /**
  *
  * @author Kong My
@@ -16,12 +10,6 @@ public abstract class MyAbstractList<E> implements MyList<E> {
 
     public MyAbstractList() {
         // Empty default constuctor
-    }
-
-    public MyAbstractList(Collection<? extends E> collection) {
-        for (E object : collection) {
-            add(object);
-        }
     }
 
     public boolean isEmpty() {
@@ -51,7 +39,7 @@ public abstract class MyAbstractList<E> implements MyList<E> {
     }
 
     protected void ensureValidIndex(int index) {
-        if (index >= size()) {
+        if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
     }
@@ -90,7 +78,7 @@ public abstract class MyAbstractList<E> implements MyList<E> {
 
             OtherListLoop:
             for (E object : otherList) {
-                if (contains(object)) {
+                if (get(i).equals(object)) {
                     continue ThisListLoop;
                 }
             }
@@ -103,4 +91,21 @@ public abstract class MyAbstractList<E> implements MyList<E> {
         return changed;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+
+        for (E object : this) {
+            builder.append(object.toString()).append(", ");
+        }
+
+        // Remove tailing comma if not empty
+        if (size() > 0) {
+            builder.delete(builder.length() - 2, builder.length());
+        }
+
+        builder.append("]");
+        return builder.toString();
+    }
 }
