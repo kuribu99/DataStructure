@@ -5,7 +5,6 @@ package com.kongmy.ds.p6;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  *
@@ -25,7 +24,7 @@ public class Question2 {
         //String line = scanner.nextLine().trim();
 
         // Use regex to split and add to queue
-        for (String str : line.split("[^0-9\\+\\-\\*\\/]+")) {
+        for (String str : line.split("[^0-9\\+\\-\\*/]+")) {
             if (str.trim().length() > 0) {
                 queue.add(str.trim());
             }
