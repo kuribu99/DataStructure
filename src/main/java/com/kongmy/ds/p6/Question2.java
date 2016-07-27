@@ -24,7 +24,7 @@ public class Question2 {
         //System.out.print("Enter a prefix expression: ");
         //String line = scanner.nextLine().trim();
 
-        // Use regex to split and add to stack
+        // Use regex to split and add to queue
         for (String str : line.split("[^0-9\\+\\-\\*\\/]+")) {
             if (str.trim().length() > 0) {
                 queue.add(str.trim());
@@ -44,7 +44,7 @@ public class Question2 {
         String tempString3;
         Expression tempExpr;
 
-        // Evaluate until stack is left with 1 item
+        // Evaluate until queue is left with 1 item
         while (queue.size() > 1) {
             tempString1 = queue.remove();
 
