@@ -48,21 +48,21 @@ public class MySortedLinkedList<E extends Comparable<E>> extends MyLinkedList<E>
             // Append after tail
             if (currentNode == null) {
                 tailNode.nextNode = newNode;
-                newNode.lastNode = tailNode;
+                newNode.previousNode = tailNode;
                 tailNode = newNode;
 
             } // Append at first
             else if (currentNode.equals(headNode)) {
                 headNode = newNode;
                 newNode.nextNode = currentNode;
-                currentNode.lastNode = newNode;
+                currentNode.previousNode = newNode;
 
             } // Append before other nodes
             else {
                 newNode.nextNode = currentNode;
-                newNode.lastNode = currentNode.lastNode;
-                currentNode.lastNode = newNode;
-                newNode.lastNode.nextNode = newNode;
+                newNode.previousNode = currentNode.previousNode;
+                currentNode.previousNode = newNode;
+                newNode.previousNode.nextNode = newNode;
             }
 
         }

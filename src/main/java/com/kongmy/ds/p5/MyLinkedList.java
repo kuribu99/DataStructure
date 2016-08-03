@@ -32,7 +32,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
             for (int i = 1; i < array.length; i++) {
                 newNode = new Node<>(array[i]);
                 currentNode.nextNode = newNode;
-                newNode.lastNode = currentNode;
+                newNode.previousNode = currentNode;
                 currentNode = newNode;
             }
 
@@ -56,14 +56,14 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
 
         Node<E> newNode = new Node(object);
         if (index == 0) {
-            headNode.lastNode = newNode;
+            headNode.previousNode = newNode;
             headNode = newNode;
         } else {
             Node<E> currentNode = getNode(index);
             newNode.nextNode = currentNode;
-            newNode.lastNode = currentNode.lastNode;
-            newNode.nextNode.lastNode = newNode;
-            newNode.lastNode.nextNode = newNode;
+            newNode.previousNode = currentNode.previousNode;
+            newNode.nextNode.previousNode = newNode;
+            newNode.previousNode.nextNode = newNode;
         }
 
         size++;
@@ -77,7 +77,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
             headNode = newNode;
             tailNode = newNode;
         } else {
-            newNode.lastNode = tailNode;
+            newNode.previousNode = tailNode;
             tailNode.nextNode = newNode;
             tailNode = newNode;
         }
@@ -109,21 +109,21 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         // Set to head if it is first
         if (index == 0) {
             newNode.nextNode = headNode.nextNode;
-            newNode.nextNode.lastNode = newNode;
+            newNode.nextNode.previousNode = newNode;
             headNode = newNode;
 
         } // Set to tail if last
         else if (index == size - 1) {
-            newNode.lastNode = tailNode.lastNode;
-            newNode.lastNode.nextNode = newNode;
+            newNode.previousNode = tailNode.previousNode;
+            newNode.previousNode.nextNode = newNode;
             tailNode = newNode;
 
         } // Replace current node
         else {
             newNode.nextNode = currentNode.nextNode;
-            newNode.lastNode = currentNode.lastNode;
-            newNode.nextNode.lastNode = newNode;
-            newNode.lastNode.nextNode = newNode;
+            newNode.previousNode = currentNode.previousNode;
+            newNode.nextNode.previousNode = newNode;
+            newNode.previousNode.nextNode = newNode;
         }
     }
 
@@ -153,7 +153,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
             if (currentNode.element.equals(object)) {
                 break;
             }
-            currentNode = currentNode.lastNode;
+            currentNode = currentNode.previousNode;
             index--;
         }
 
@@ -168,17 +168,17 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         // Update head if is first
         if (index == 0) {
             headNode = removedNode.nextNode;
-            headNode.lastNode = null;
+            headNode.previousNode = null;
 
         } // Update last if is last
         else if (index == size - 1) {
-            tailNode = tailNode.lastNode;
+            tailNode = tailNode.previousNode;
             tailNode.nextNode = null;
 
         } // Simply link next and last node
         else {
-            removedNode.lastNode.nextNode = removedNode.nextNode;
-            removedNode.nextNode.lastNode = removedNode.lastNode;
+            removedNode.previousNode.nextNode = removedNode.nextNode;
+            removedNode.nextNode.previousNode = removedNode.previousNode;
         }
 
         size--;
@@ -226,12 +226,12 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
 
         protected final E element;
         protected Node<E> nextNode;
-        protected Node<E> lastNode;
+        protected Node<E> previousNode;
 
         public Node(E element) {
             this.element = element;
             this.nextNode = null;
-            this.lastNode = null;
+            this.previousNode = null;
         }
 
     }
