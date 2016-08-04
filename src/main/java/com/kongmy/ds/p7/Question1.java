@@ -2,6 +2,7 @@
  */
 package com.kongmy.ds.p7;
 
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -22,6 +23,17 @@ public class Question1 {
         tree.inOrder();
         tree.preOrder();
         tree.postOrder();
+        System.out.println("Number of leaves: " + tree.getNumberOfLeaves());
+        System.out.println("Sum of all elements: " + sumTree(tree));
+
+    }
+
+    private static int sumTree(BinaryTree<Integer> tree) {
+        int sum = 0;
+        for (Iterator<Integer> it = tree.iterator(); it.hasNext();) {
+            sum += it.next();
+        }
+        return sum;
     }
 
 }

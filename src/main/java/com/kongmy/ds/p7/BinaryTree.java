@@ -143,6 +143,20 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
         return true;
     }
 
+    public int getNumberOfLeaves() {
+        return getNumberOfLeaves(rootNode);
+    }
+
+    protected int getNumberOfLeaves(TreeNode<Comparable<E>> currentNode) {
+        if (currentNode == null) {
+            return 0;
+        } else if (currentNode.leftNode == null && currentNode.rightNode == null) {
+            return 1;
+        } else {
+            return getNumberOfLeaves(currentNode.leftNode) + getNumberOfLeaves(currentNode.rightNode);
+        }
+    }
+
     @Override
     public void inOrder() {
         print(new InOrderIterator());
