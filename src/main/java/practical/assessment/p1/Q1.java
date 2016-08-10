@@ -17,7 +17,8 @@ public class Q1 {
     public static int bunny_ears(int n) {
         if (n <= 0) {
             return 0;
-        } else {
+        }
+        else {
             return (n % 2 == 0 ? 3 : 2) + bunny_ears(n - 1);
         }
     }

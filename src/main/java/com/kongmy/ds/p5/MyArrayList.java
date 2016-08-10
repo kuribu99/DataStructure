@@ -131,7 +131,8 @@ public class MyArrayList<E> extends MyAbstractList<E> {
         public Object next() {
             if (current < 0) {
                 current = 0;
-            } else {
+            }
+            else {
                 current++;
             }
             return iteratorArray[current];

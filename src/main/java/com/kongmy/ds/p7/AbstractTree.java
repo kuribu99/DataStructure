@@ -9,9 +9,9 @@ import java.util.Iterator;
  * @author Kong My
  */
 public abstract class AbstractTree<E> implements Tree<E> {
-    
+
     protected int size;
-    
+
     protected AbstractTree() {
         size = 0;
     }

@@ -26,7 +26,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
     public boolean insert(Comparable<E> object) {
         if (rootNode == null) {
             rootNode = new TreeNode<>(object);;
-        } else {
+        }
+        else {
             insert(rootNode, object);
         }
         size++;
@@ -45,7 +46,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
                 return insert(currentNode.leftNode, newElement);
             }
 
-        } else {
+        }
+        else {
             // Try to insert to right if empty
             if (currentNode.rightNode == null) {
                 currentNode.rightNode = new TreeNode<>(newElement);
@@ -62,7 +64,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
         if (rootNode != null && object != null && delete(null, rootNode, object)) {
             size--;
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -99,7 +102,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
                 } // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
                     parentNode.leftNode = currentNode.rightNode;
-                } else {
+                }
+                else {
                     parentNode.rightNode = currentNode.rightNode;
                 }
 
@@ -113,7 +117,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
                 } // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
                     parentNode.leftNode = currentNode.leftNode;
-                } else {
+                }
+                else {
                     parentNode.rightNode = currentNode.leftNode;
                 }
 
@@ -123,15 +128,18 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
                 // Delete empty root node
                 if (parentNode == null) {
                     rootNode = null;
-                } else {
+                }
+                else {
                     // Remove directly from parent
                     if (currentNode.equals(parentNode.leftNode)) {
                         parentNode.leftNode = null;
-                    } else {
+                    }
+                    else {
                         parentNode.rightNode = null;
                     }
                 }
-            } else {
+            }
+            else {
                 // Make right to parent
                 currentNode.element = currentNode.rightNode.element;
 
@@ -150,9 +158,11 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
     protected int getNumberOfLeaves(TreeNode<Comparable<E>> currentNode) {
         if (currentNode == null) {
             return 0;
-        } else if (currentNode.leftNode == null && currentNode.rightNode == null) {
+        }
+        else if (currentNode.leftNode == null && currentNode.rightNode == null) {
             return 1;
-        } else {
+        }
+        else {
             return getNumberOfLeaves(currentNode.leftNode) + getNumberOfLeaves(currentNode.rightNode);
         }
     }
@@ -226,7 +236,8 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
         public E next() {
             if (current < 0) {
                 current = 0;
-            } else {
+            }
+            else {
                 current++;
             }
             return iteratorArray[current];

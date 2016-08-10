@@ -18,10 +18,12 @@ public class Q2 {
             int number = Integer.parseInt(input);
             if (number < 0 || number > 99999) {
                 System.out.println("\nError. Input must be from 0 to 99999");
-            } else {
+            }
+            else {
                 recursivePrint(number);
             }
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             System.out.println("\nError: Invalid input.");
         }
     }
@@ -33,10 +35,12 @@ public class Q2 {
     public static void recursivePrint(int input, int currentFactor, int loopFactor) {
         if (loopFactor == 0) {
             return;
-        } else if (currentFactor == 0) {
+        }
+        else if (currentFactor == 0) {
             System.out.println();
             recursivePrint(input % loopFactor, loopFactor / 10, loopFactor / 10);
-        } else {
+        }
+        else {
             System.out.printf("%d   ", (input / currentFactor) % 10);
             recursivePrint(input, currentFactor / 10, loopFactor);
         }

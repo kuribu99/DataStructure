@@ -13,8 +13,12 @@ public class Q1 {
     }
 
     public static double calculateInvestment(double investAmount, int interestRate, int year) {
-        if(year <= 0) return investAmount;
-        else return (100 + interestRate) * 0.01 * calculateInvestment(investAmount, interestRate, year - 1);
+        if (year <= 0) {
+            return investAmount;
+        }
+        else {
+            return (100 + interestRate) * 0.01 * calculateInvestment(investAmount, interestRate, year - 1);
+        }
     }
 
 }

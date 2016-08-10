@@ -32,7 +32,8 @@ public class Question2 {
 
         if (queue.size() == 0) {
             System.out.println("Empty input, please check you input");
-        } else {
+        }
+        else {
             System.out.println("Result: " + evaluate(queue));
         }
     }
@@ -60,7 +61,7 @@ public class Question2 {
                     // If 3rd is also operand, evaluate
                     if (!isOperator(tempString3)) {
                         queue.remove();
-                        
+
                         // Create expression
                         tempExpr = Expression.make(tempString1, tempString2, tempString3);
 
@@ -70,17 +71,20 @@ public class Question2 {
                         // Push back to queue
                         queue.add(tempString1);
 
-                    } else {
+                    }
+                    else {
                         // Push back both to queue
                         queue.add(tempString1);
                         queue.add(tempString2);
                     }
-                } else {
+                }
+                else {
                     // Push back to queue
                     queue.add(tempString1);
                 }
 
-            } else {
+            }
+            else {
                 // Push back to queue
                 queue.add(tempString1);
             }
@@ -110,7 +114,8 @@ public class Question2 {
                 left = Integer.parseInt(operandLeft);
                 right = Integer.parseInt(operandRight);
 
-            } catch (NumberFormatException e) {
+            }
+            catch (NumberFormatException e) {
                 throw new IllegalArgumentException("Invalid operand");
             }
 

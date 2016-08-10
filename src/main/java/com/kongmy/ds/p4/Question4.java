@@ -54,7 +54,8 @@ public class Question4 {
     public static String decimalCommas(long n) {
         if (Math.abs(n) < 1000) {
             return String.valueOf(n);
-        } else {
+        }
+        else {
             return String.format("%s,%03d", decimalCommas(n / 1000), Math.abs(n) % 1000);
         }
     }

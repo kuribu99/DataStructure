@@ -37,7 +37,8 @@ public class MySortedLinkedList<E extends Comparable<E>> extends MyLinkedList<E>
         if (size == 0) {
             headNode = newNode;
             tailNode = newNode;
-        } else {
+        }
+        else {
             Node<E> currentNode = headNode;
 
             // Move until current node's element is large than object

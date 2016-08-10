@@ -18,7 +18,7 @@ public class Question1 {
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
         Scanner scanner = new Scanner(System.in);
-        
+
         // Ask for line
         System.out.print("Enter a line: ");
         String line = scanner.nextLine().trim();
@@ -29,17 +29,17 @@ public class Question1 {
         }
 
         // Take out one by one and put into stack
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             stack.push(queue.remove());
         }
 
         StringBuilder builder = new StringBuilder();
 
         // Take out from stack
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             builder.append(stack.pop());
         }
-        
+
         System.out.println("Result: " + builder.toString());
     }
 

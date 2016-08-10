@@ -45,7 +45,8 @@ public class Question1 {
     public static <E extends Comparable<E>> E min(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             E min = list.get(0);
             for (int i = 1; i < list.size(); i++) {
                 if (min.compareTo(list.get(i)) > 0) {
@@ -59,7 +60,8 @@ public class Question1 {
     public static <E extends Comparable<E>> E minLazy(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             ArrayList<E> newList = new ArrayList<>(list);
             Collections.sort(newList);
             return newList.get(0);
@@ -69,7 +71,8 @@ public class Question1 {
     public static <E extends Comparable<E>> E minLambda(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             Comparator<E> comparator = getComparator();
             return list.stream().min(comparator).get();
         }

@@ -17,7 +17,8 @@ public class Question12 {
     public static int SumOfSquare(int n) {
         if (n == 1) {
             return 1;
-        } else {
+        }
+        else {
             return n * n + SumOfSquare(n - 1);
         }
     }

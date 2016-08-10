@@ -45,7 +45,8 @@ public class Question2 {
     public static <E extends Comparable<E>> E max(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             E max = list.get(0);
             for (int i = 1; i < list.size(); i++) {
                 if (max.compareTo(list.get(i)) < 0) {
@@ -59,7 +60,8 @@ public class Question2 {
     public static <E extends Comparable<E>> E maxLazy(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             ArrayList<E> newList = new ArrayList<>(list);
             Collections.sort(newList);
             return newList.get(newList.size() - 1);
@@ -69,7 +71,8 @@ public class Question2 {
     public static <E extends Comparable<E>> E maxLambda(ArrayList<E> list) {
         if (list.isEmpty()) {
             return null;
-        } else {
+        }
+        else {
             Comparator<E> comparator = getComparator();
             return list.stream().max(comparator).get();
         }

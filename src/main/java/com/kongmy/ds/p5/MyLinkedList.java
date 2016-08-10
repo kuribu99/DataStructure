@@ -58,7 +58,8 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         if (index == 0) {
             headNode.previousNode = newNode;
             headNode = newNode;
-        } else {
+        }
+        else {
             Node<E> currentNode = getNode(index);
             newNode.nextNode = currentNode;
             newNode.previousNode = currentNode.previousNode;
@@ -76,7 +77,8 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         if (size == 0) {
             headNode = newNode;
             tailNode = newNode;
-        } else {
+        }
+        else {
             newNode.previousNode = tailNode;
             tailNode.nextNode = newNode;
             tailNode = newNode;
@@ -215,7 +217,8 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         public Object next() {
             if (current < 0) {
                 current = 0;
-            } else {
+            }
+            else {
                 current++;
             }
             return iteratorArray[current];

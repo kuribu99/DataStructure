@@ -27,7 +27,8 @@ public class Question2 {
                 }
             }
             scanner.close();
-        } catch (FileNotFoundException ex) {
+        }
+        catch (FileNotFoundException ex) {
             System.out.println("File missing in action");
         }
 
