@@ -112,7 +112,7 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
                 // Link to root directly
                 if (noParent) {
-                    parentNode = currentNode.leftNode;
+                    rootNode = currentNode.leftNode;
 
                 } // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
