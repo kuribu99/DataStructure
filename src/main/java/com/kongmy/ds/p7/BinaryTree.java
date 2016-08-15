@@ -14,12 +14,29 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
     @Override
     public boolean search(Comparable<E> object) {
-        for (Iterator it = new InOrderIterator(); it.hasNext();) {
-            if (object.equals(it.next())) {
+        return search(rootNode, object);
+    }
+
+    private boolean search(TreeNode<Comparable<E>> currentNode, Comparable<E> object) {
+        if (currentNode == null) {
+            return false;
+        }
+        else {
+            int compareResult = object.compareTo((E) currentNode.element);
+
+            // This object is less than current node object
+            if (compareResult < 0) {
+                return search(currentNode.leftNode, object);
+            }
+            // This object is greater than current node object
+            else if (compareResult > 0) {
+                return search(currentNode.rightNode, object);
+            }
+            // Found at this node
+            else {
                 return true;
             }
         }
-        return false;
     }
 
     @Override

@@ -23,6 +23,12 @@ public class Question1 {
         tree.inOrder();
         tree.preOrder();
         tree.postOrder();
+
+        for (int i = 0; i < 5; i++) {
+            int randNumber = rand.nextInt(100);
+            System.out.printf("Has %d: %s\n", randNumber, String.valueOf(tree.search(randNumber)));
+        }
+
         System.out.println("Number of leaves: " + tree.getNumberOfLeaves());
         System.out.println("Sum of all elements: " + sumTree(tree));
 
