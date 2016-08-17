@@ -114,7 +114,7 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
                 // Link to root directly
                 if (noParent) {
-                    parentNode = currentNode.rightNode;
+                    rootNode = currentNode.rightNode;
 
                 } // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
@@ -143,7 +143,7 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
             else if (!hasLeft && !hasRight) {
 
                 // Delete empty root node
-                if (parentNode == null) {
+                if (noParent) {
                     rootNode = null;
                 }
                 else {
@@ -157,11 +157,30 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
                 }
             }
             else {
-                // Make right to parent
-                currentNode.element = currentNode.rightNode.element;
+                // Node to replace removed
+                TreeNode<Comparable<E>> replaceNode = currentNode.rightNode;
 
-                // Now delete the right node instead because we already moved it to parent
-                return delete(currentNode, currentNode.rightNode, currentNode.rightNode.element);
+                // Parent of node to replace removed
+                TreeNode<Comparable<E>> replaceParentNode = currentNode;
+
+                // Move down to rightmost node
+                while (replaceNode.rightNode != null) {
+                    replaceParentNode = replaceNode;
+                    replaceNode = replaceNode.rightNode;
+                }
+
+                // Remove the node by replacing it
+                currentNode.element = replaceNode.element;
+
+                // If replacing node is leaf
+                if (replaceNode.leftNode == null) {
+                    // Remove from parent
+                    replaceParentNode.rightNode = null;
+                }
+                else {
+                    // Link left to parent instead
+                    replaceParentNode.rightNode = replaceNode.leftNode;
+                }
             }
         }
 
@@ -186,16 +205,19 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
     @Override
     public void inOrder() {
+        System.out.print("InOrder: ");
         print(new InOrderIterator());
     }
 
     @Override
     public void preOrder() {
+        System.out.print("PreOrder: ");
         print(new PreOrderIterator());
     }
 
     @Override
     public void postOrder() {
+        System.out.print("PpstOrder: ");
         print(new PostOrderIterator());
     }
 

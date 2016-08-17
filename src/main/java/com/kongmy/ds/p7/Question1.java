@@ -29,6 +29,19 @@ public class Question1 {
             System.out.printf("Has %d: %s\n", randNumber, String.valueOf(tree.search(randNumber)));
         }
 
+        for (int i = 0; i < 8; i++) {
+            int randNumber = rand.nextInt(100);
+            while (!tree.search(randNumber)) {
+                randNumber = rand.nextInt(100);
+            }
+            System.out.println("Removed " + randNumber);
+            tree.delete(randNumber);
+        }
+
+        tree.inOrder();
+        tree.preOrder();
+        tree.postOrder();
+
         System.out.println("Number of leaves: " + tree.getNumberOfLeaves());
         System.out.println("Sum of all elements: " + sumTree(tree));
 
