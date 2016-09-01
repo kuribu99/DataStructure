@@ -28,7 +28,7 @@ public class Question1 {
     }
 
     private static void printArray(int[] arr) {
-        System.out.println(Arrays.toString(generateIntegers(20)));
+        System.out.println(Arrays.toString(arr));
     }
 
 }
