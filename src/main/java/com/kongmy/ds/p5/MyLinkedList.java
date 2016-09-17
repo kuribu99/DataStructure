@@ -106,27 +106,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
     @Override
     public void set(int index, E object) {
         Node<E> currentNode = getNode(index);
-        Node<E> newNode = new Node<>(object);
-
-        // Set to head if it is first
-        if (index == 0) {
-            newNode.nextNode = headNode.nextNode;
-            newNode.nextNode.previousNode = newNode;
-            headNode = newNode;
-
-        } // Set to tail if last
-        else if (index == size - 1) {
-            newNode.previousNode = tailNode.previousNode;
-            newNode.previousNode.nextNode = newNode;
-            tailNode = newNode;
-
-        } // Replace current node
-        else {
-            newNode.nextNode = currentNode.nextNode;
-            newNode.previousNode = currentNode.previousNode;
-            newNode.nextNode.previousNode = newNode;
-            newNode.previousNode.nextNode = newNode;
-        }
+        currentNode.element = object;
     }
 
     @Override
@@ -227,7 +207,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
 
     protected class Node<E> {
 
-        protected final E element;
+        protected E element;
         protected Node<E> nextNode;
         protected Node<E> previousNode;
 
