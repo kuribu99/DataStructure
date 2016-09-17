@@ -12,16 +12,18 @@ import java.util.Scanner;
  */
 public class Question2 {
 
+    private static final boolean ASK_FOR_EXPRESSION = false;
     private static final String OPERATORS = "+-*/";
 
     public static void main(String[] args) throws Exception {
         Queue<String> queue = new LinkedList<>();
-        Scanner scanner = new Scanner(System.in);
 
-        // Ask for expression
-        String line = "-    +    *    9    +    2    8    *    +    4    8    6    3";
-        //System.out.print("Enter a prefix expression: ");
-        //String line = scanner.nextLine().trim();
+        String line = "-    +    *    9    +    2    8    *    +    4    8    6    3";;
+        if (ASK_FOR_EXPRESSION) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a prefix expression: ");
+            line = scanner.nextLine().trim();
+        }
 
         // Use regex to split and add to queue
         for (String str : line.split("[^0-9\\+\\-\\*/]+")) {
