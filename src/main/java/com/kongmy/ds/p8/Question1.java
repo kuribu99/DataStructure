@@ -2,9 +2,6 @@
  */
 package com.kongmy.ds.p8;
 
-import java.util.Iterator;
-import java.util.Random;
-
 /**
  *
  * @author Kong My

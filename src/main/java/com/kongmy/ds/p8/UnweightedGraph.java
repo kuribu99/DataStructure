@@ -2,7 +2,6 @@
  */
 package com.kongmy.ds.p8;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**

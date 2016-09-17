@@ -28,7 +28,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
             Node<E> currentNode = new Node<>(array[0]);
             headNode = currentNode;
 
-            Node<E> newNode = null;
+            Node<E> newNode;
             for (int i = 1; i < array.length; i++) {
                 newNode = new Node<>(array[i]);
                 currentNode.nextNode = newNode;
@@ -151,13 +151,15 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         if (index == 0) {
             headNode = removedNode.nextNode;
             headNode.previousNode = null;
+        }
 
-        } // Update last if is last
+        // Update last if is last
         else if (index == size - 1) {
             tailNode = tailNode.previousNode;
             tailNode.nextNode = null;
+        }
 
-        } // Simply link next and last node
+        // Simply link next and last node
         else {
             removedNode.previousNode.nextNode = removedNode.nextNode;
             removedNode.nextNode.previousNode = removedNode.previousNode;

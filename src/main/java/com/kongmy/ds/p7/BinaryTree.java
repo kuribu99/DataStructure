@@ -54,11 +54,14 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
     protected boolean insert(TreeNode<Comparable<E>> currentNode, Comparable<E> newElement) {
         // If smaller than current, insert to left
         if (newElement.compareTo((E) currentNode.element) < 0) {
+
             // Try to insert to left if empty
             if (currentNode.leftNode == null) {
                 currentNode.leftNode = new TreeNode<>(newElement);
                 return true;
-            } // Recursively insert based on left node
+            }
+
+            // Recursively insert based on left node
             else {
                 return insert(currentNode.leftNode, newElement);
             }
@@ -69,7 +72,9 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
             if (currentNode.rightNode == null) {
                 currentNode.rightNode = new TreeNode<>(newElement);
                 return true;
-            } // Recursively insert based on right node
+            }
+
+            // Recursively insert based on right node
             else {
                 return insert(currentNode.rightNode, newElement);
             }
@@ -98,12 +103,14 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
         // Go to left subtree if smaller
         if (compareResult < 0) {
             return delete(currentNode, currentNode.leftNode, object);
+        }
 
-        } // Go to right subtree if larger
+        // Go to right subtree if larger
         else if (compareResult > 0) {
             return delete(currentNode, currentNode.rightNode, object);
+        }
 
-        } // Delete current node
+        // Delete current node
         else {
             boolean hasLeft = currentNode.leftNode != null;
             boolean hasRight = currentNode.rightNode != null;
@@ -111,35 +118,36 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
             // Move right to parent
             if (!hasLeft && hasRight) {
-
                 // Link to root directly
                 if (noParent) {
                     rootNode = currentNode.rightNode;
-
-                } // Link right node to parent
+                }
+                // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
                     parentNode.leftNode = currentNode.rightNode;
                 }
                 else {
                     parentNode.rightNode = currentNode.rightNode;
                 }
+            }
 
-            } // Move left to parent
+            // Move left to parent
             else if (!hasRight && hasLeft) {
 
                 // Link to root directly
                 if (noParent) {
                     rootNode = currentNode.leftNode;
-
-                } // Link right node to parent
+                }
+                // Link right node to parent
                 else if (currentNode.equals(parentNode.leftNode)) {
                     parentNode.leftNode = currentNode.leftNode;
                 }
                 else {
                     parentNode.rightNode = currentNode.leftNode;
                 }
+            }
 
-            } // Delete current node
+            // Delete current node
             else if (!hasLeft && !hasRight) {
 
                 // Delete empty root node
