@@ -92,7 +92,7 @@ public abstract class AbstractGraph<V> implements Graph<V> {
 
     @Override
     public List<V> getVerticles() {
-        // Prevent use modify our list
+        // Prevent user modify our list
         return new LinkedList<>(vertices);
     }
 

@@ -225,7 +225,7 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
 
     @Override
     public void postOrder() {
-        System.out.print("PpstOrder: ");
+        System.out.print("PostOrder: ");
         print(new PostOrderIterator());
     }
 
