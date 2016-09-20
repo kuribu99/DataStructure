@@ -78,8 +78,7 @@ public class MyArrayList<E> extends MyAbstractList<E> {
 
     @Override
     public void set(int index, E object) {
-        add(index, object);
-        remove(index + 1);
+        array[index] = object;
     }
 
     @Override
