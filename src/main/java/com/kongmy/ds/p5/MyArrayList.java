@@ -78,6 +78,7 @@ public class MyArrayList<E> extends MyAbstractList<E> {
 
     @Override
     public void set(int index, E object) {
+        ensureValidIndex(index);
         array[index] = object;
     }
 
