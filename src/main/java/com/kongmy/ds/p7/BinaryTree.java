@@ -3,6 +3,7 @@
 package com.kongmy.ds.p7;
 
 import java.util.Iterator;
+import java.util.Stack;
 
 /**
  *
@@ -214,7 +215,56 @@ public class BinaryTree<E> extends AbstractTree<Comparable<E>> {
     @Override
     public void inOrder() {
         System.out.print("InOrder: ");
-        print(new InOrderIterator());
+        //print(new InOrderIterator());
+        inOrder(rootNode);
+    }
+
+    protected void inOrder(TreeNode<Comparable<E>> root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode<Comparable<E>>> s = new Stack<>();
+        Stack<TreeNode<Comparable<E>>> temp = new Stack<>();
+
+        s.push(root);
+
+        TreeNode<Comparable<E>> node;
+        TreeNode<Comparable<E>> left;
+        TreeNode<Comparable<E>> right;
+        boolean pushing = true;
+
+        while (pushing) {
+
+            pushing = false;
+
+            while (!s.isEmpty()) {
+                node = s.pop();
+                left = node.leftNode;
+                right = node.rightNode;
+
+                if (left != null && !s.contains(left) && !temp.contains(left)) {
+                    temp.push(left);
+                    pushing = true;
+                }
+
+                temp.push(node);
+
+                if (right != null && !s.contains(right) && !temp.contains(right)) {
+                    temp.push(right);
+                    pushing = true;
+                }
+            }
+
+            while (!temp.isEmpty()) {
+                s.push(temp.pop());
+            }
+        }
+
+        while (!s.isEmpty()) {
+            System.out.print(s.pop().element);
+        }
+        System.out.println();
     }
 
     @Override
